@@ -9,7 +9,8 @@
     "test": "ng test",
     "serve:ssr:mf-shell": "node dist/mf-shell/server/server.mjs",
     "serve:ssr:mf-payment": "node dist/mf-payment/server/server.mjs",
-    "serve:ssr:mf-shopping": "node dist/mf-shopping/server/server.mjs"
+    "serve:ssr:mf-shopping": "node dist/mf-shopping/server/server.mjs",
+    "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-architects/module-federation": "^18.0.6",
     "@angular-devkit/build-angular": "^19.0.4",
     "@angular/cli": "^19.0.1",
     "@angular/compiler-cli": "^19.0.0",
@@ -42,6 +44,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.0.0",
+    "ngx-build-plus": "^18.0.0",
     "typescript": "~5.6.2"
   }
 }

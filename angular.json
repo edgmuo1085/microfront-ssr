@@ -15,31 +15,29 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/mf-shell",
             "index": "projects/mf-shell/src/index.html",
-            "browser": "projects/mf-shell/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/mf-shell/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/mf-shell/public"
+                "input": "projects/mf-shell/public",
+                "output": "."
               }
             ],
-            "styles": [
-              "projects/mf-shell/src/styles.scss"
-            ],
+            "styles": ["projects/mf-shell/src/styles.scss"],
             "scripts": [],
-            "server": "projects/mf-shell/src/main.server.ts",
             "outputMode": "server",
             "ssr": {
               "entry": "projects/mf-shell/src/server.ts"
-            }
+            },
+            "main": "projects/mf-shell/src/main.ts",
+            "extraWebpackConfig": "projects/mf-shell/webpack.config.js",
+            "commonChunk": false
           },
           "configurations": {
             "production": {
@@ -55,7 +53,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "extraWebpackConfig": "projects/mf-shell/webpack.prod.config.js"
             },
             "development": {
               "optimization": false,
@@ -66,16 +65,22 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "mf-shell:build:production"
+              "buildTarget": "mf-shell:build:production",
+              "extraWebpackConfig": "projects/mf-shell/webpack.prod.config.js"
             },
             "development": {
               "buildTarget": "mf-shell:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "port": 4200,
+            "publicHost": "http://localhost:4200",
+            "extraWebpackConfig": "projects/mf-shell/webpack.config.js"
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
@@ -83,10 +88,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/mf-shell/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -95,9 +97,7 @@
                 "input": "projects/mf-shell/public"
               }
             ],
-            "styles": [
-              "projects/mf-shell/src/styles.scss"
-            ],
+            "styles": ["projects/mf-shell/src/styles.scss"],
             "scripts": []
           }
         }
@@ -120,9 +120,7 @@
             "outputPath": "dist/mf-payment",
             "index": "projects/mf-payment/src/index.html",
             "browser": "projects/mf-payment/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/mf-payment/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -131,9 +129,7 @@
                 "input": "projects/mf-payment/public"
               }
             ],
-            "styles": [
-              "projects/mf-payment/src/styles.scss"
-            ],
+            "styles": ["projects/mf-payment/src/styles.scss"],
             "scripts": [],
             "server": "projects/mf-payment/src/main.server.ts",
             "outputMode": "server",
@@ -183,10 +179,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/mf-payment/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -195,9 +188,7 @@
                 "input": "projects/mf-payment/public"
               }
             ],
-            "styles": [
-              "projects/mf-payment/src/styles.scss"
-            ],
+            "styles": ["projects/mf-payment/src/styles.scss"],
             "scripts": []
           }
         }
@@ -220,9 +211,7 @@
             "outputPath": "dist/mf-shopping",
             "index": "projects/mf-shopping/src/index.html",
             "browser": "projects/mf-shopping/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/mf-shopping/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -231,9 +220,7 @@
                 "input": "projects/mf-shopping/public"
               }
             ],
-            "styles": [
-              "projects/mf-shopping/src/styles.scss"
-            ],
+            "styles": ["projects/mf-shopping/src/styles.scss"],
             "scripts": [],
             "server": "projects/mf-shopping/src/main.server.ts",
             "outputMode": "server",
@@ -283,10 +270,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/mf-shopping/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -295,9 +279,7 @@
                 "input": "projects/mf-shopping/public"
               }
             ],
-            "styles": [
-              "projects/mf-shopping/src/styles.scss"
-            ],
+            "styles": ["projects/mf-shopping/src/styles.scss"],
             "scripts": []
           }
         }
@@ -328,10 +310,7 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/commons-lib/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
+            "polyfills": ["zone.js", "zone.js/testing"]
           }
         }
       }
