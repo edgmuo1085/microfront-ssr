@@ -10,8 +10,8 @@
     "serve:ssr:mf-shell": "node dist/mf-shell/server/server.mjs",
     "serve:ssr:mf-payment": "node dist/mf-payment/server/server.mjs",
     "serve:ssr:mf-shopping": "node dist/mf-shopping/server/server.mjs",
-    "format:write": "prettier --write \"**/src/**/*.{ts,js,json,html,css,scss,md}\"",
-    "format:check": "prettier --check \"**/src/**/*.{ts,js,json,html,css,scss,md}\"",
+    "format:write": "prettier --write \"**/projects/**/*.{ts,js,json,html,css,scss,md}\"",
+    "format:check": "prettier --check \"**/projects/**/*.{ts,js,json,html,css,scss,md}\"",
     "run:all": "node node_modules/@angular-architects/module-federation/src/server/mf-dev-server.js"
   },
   "private": true,
