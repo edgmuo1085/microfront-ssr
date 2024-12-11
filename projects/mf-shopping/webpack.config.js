@@ -1,7 +1,7 @@
 const { shareAll, withModuleFederationPlugin } = require('@angular-architects/module-federation/webpack');
 
 module.exports = withModuleFederationPlugin({
-  name: 'mf-shopping',
+  name: 'mfShopping',
 
   exposes: {
     './Component': './projects/mf-shopping/src/app/app.component.ts',
@@ -10,4 +10,5 @@ module.exports = withModuleFederationPlugin({
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
   },
+  sharedMappings: ['@commons-lib'],
 });

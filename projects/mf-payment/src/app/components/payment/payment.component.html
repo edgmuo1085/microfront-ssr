@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>Productos agregados</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Descripcion del producto</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of products; track $index) {
+        <tr>
+          <td data-label="Projeto">{{ item.name }}</td>
+          <td data-label="Projeto">{{ item.price }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
